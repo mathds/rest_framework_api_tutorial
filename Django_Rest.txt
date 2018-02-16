@@ -1,0 +1,25 @@
+## Django Rest Framework 
+cd ~/Documents/LBL/Work/Environments/Tutorials
+# Setting up project
+virtualenv env
+source env/bin/activate
+pip install django
+pip install djangorestframework
+pip install pygments  #code highlighting
+cd ~/Documents/LBL/Work/Tutorials/rest_framework_api_tutorial
+django-admin.py startproject tutorial
+cd tutorial
+python manage.py startapp snippets
+python manage.py makemigrations snippets
+python manage.py migrate
+python manage.py shell
+quit()
+# Run api
+python manage.py runserver
+# Test API
+pip install httpie
+http http://127.0.0.1:8000/snippets/
+http http://127.0.0.1:8000/snippets.json  # JSON suffix
+http http://127.0.0.1:8000/snippets.api   # Browsable API suffix
+#Post using form data
+http --form POST http://127.0.0.1:8000/snippets/ code="print 123" 
